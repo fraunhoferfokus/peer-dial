@@ -88,6 +88,6 @@ server.listen(PORT,function(){
 	setTimeout(function(){
 		dialServer.stop();
 		console.log("DIAL Server stopped");
-	}, 5000);
+	}, 500000);
 	console.log("DIAL Server is running on PORT "+PORT);
 });

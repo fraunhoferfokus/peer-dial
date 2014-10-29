@@ -1,8 +1,8 @@
 peer-dial 
 =========
 
-peer-ssdp is a simple Node.js module implementing the Discovery and Launch Protocol DIAL as described in the
-[Protocol Specification Document](http://www.upnp.org/specs/arch/UPnP-arch-DeviceArchitecture-v1.1.pdf)
+peer-dial is a simple Node.js module implementing the Discovery and Launch Protocol DIAL as described in the
+[Protocol Specification Document](http://www.dial-multiscreen.org/dial-protocol-specification)
 
 Setup
 =====

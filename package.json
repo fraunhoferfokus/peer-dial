@@ -9,7 +9,7 @@
 	"keywords": ["ssdp", "upnp", "nsd", "discovery", "launch", "dial"],
 	"main": "index",
 	"dependencies" : {
-		"peer-ssdp": "0.0.2",
+		"peer-ssdp": "0.0.3",
 		"ejs": "1.0.0",
 		"node-uuid": "1.4.1",
 		"express": "4.4.5"

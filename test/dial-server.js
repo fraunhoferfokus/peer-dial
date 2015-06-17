@@ -35,6 +35,25 @@ var apps = {
 		state: "stopped",
 		allowStop: true,
 		pid: null
+	},
+	"YouTube": {
+		name: "YouTube",
+		state: "stopped",
+		allowStop: true,
+		pid: null
+	},
+	"HbbTV": {
+		name: "HbbTV",
+		state: "running",
+		allowStop: false,
+		additionalData: {
+			"hbbtv:X_HbbTV_App2AppURL":"",
+			"hbbtv:X_HbbTV_InterDevSyncURL": "",
+			"hbbtv:X_HbbTV_UserAgent": ""
+		},
+		namespaces: {
+			"hbbtv": "urn:hbbtv:HbbTVCompanionScreen:2014"
+		}
 	}
 }
 var dialServer = new dial.Server({
@@ -49,7 +68,7 @@ var dialServer = new dial.Server({
 	delegate: {
 		getApp: function(appName){
 			var app = apps[appName];
-			console.log("getApp result",app);
+			console.log("getApp result for App ",appName,app);
 			return app;
 		},
 		launchApp: function(appName,lauchData,callback){

@@ -21,10 +21,10 @@
 var dial = require("../index.js");
 var http = require('http');
 var express = require('express');
+var opn = require("opn");
 var app = express();
 var server = http.createServer(app);
 
-var HOST = "127.0.0.1";// Please replace with your host
 var PORT = 3000;
 var MANUFACTURER = "Fraunhofer FOKUS";
 var MODEL_NAME = "FAMIUM Display";
@@ -34,13 +34,19 @@ var apps = {
 		name: "famium",
 		state: "stopped",
 		allowStop: true,
-		pid: null
+		pid: null,
+        launch: function (launchData) {
+            opn(launchData);
+        }
 	},
 	"YouTube": {
 		name: "YouTube",
 		state: "stopped",
 		allowStop: true,
-		pid: null
+		pid: null,
+        launch: function (launchData) {
+            opn("http://www.youtube.com/tv?"+launchData);
+        }
 	},
 	"HbbTV": {
 		name: "HbbTV",
@@ -58,7 +64,6 @@ var apps = {
 }
 var dialServer = new dial.Server({
 	expressApp: app,
-	host: HOST,
 	port: PORT,
 	manufacturer: MANUFACTURER,
 	modelName: MODEL_NAME,
@@ -72,16 +77,16 @@ var dialServer = new dial.Server({
 			return app;
 		},
 		launchApp: function(appName,lauchData,callback){
-			console.log("launchApp request",appName, lauchData);
+			console.log("launchApp request", lauchData);
 			var app = apps[appName];
 			var pid = null;
 			if (app && app.state == "stopped") {
 				app.pid = "run";
 				app.state = "starting";
-				app.timeout = setTimeout(function(){
-					app.state = "running";
-					app.timeout = null;
-				}, 5000);
+                setTimeout(function () {
+                    app.launch && app.launch(lauchData);
+                    app.state = "running";
+                },500);
 			}
 			console.log("launchApp result",app.pid);
 			callback(app.pid);

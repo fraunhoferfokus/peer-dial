@@ -9,10 +9,11 @@
 	"keywords": ["ssdp", "upnp", "nsd", "discovery", "launch", "dial"],
 	"main": "index",
 	"dependencies" : {
-		"peer-ssdp": "0.0.3",
+		"peer-ssdp": "0.0.4",
 		"ejs": "1.0.0",
 		"node-uuid": "1.4.1",
-		"express": "4.4.5"
+		"express": "4.4.5",
+        "opn": "2.0.0"
 	},
 	"readmeFilename": "Readme.md",
 	"_id": "peer-dial@0.0.2",

@@ -13,7 +13,8 @@
 		"ejs": "1.0.0",
 		"node-uuid": "1.4.1",
 		"express": "4.4.5",
-        "opn": "2.0.0"
+        "opn": "2.0.0",
+        "xml2js": "0.4.9"
 	},
 	"readmeFilename": "Readme.md",
 	"_id": "peer-dial@0.0.2",

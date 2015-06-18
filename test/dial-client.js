@@ -22,7 +22,7 @@ var dial = require("../index.js");
 
 var dialClient = new dial.Client();
 dialClient.on("found",function(deviceDesc, headers){
-	console.log("found",deviceDesc, headers);
+    console.log("found",deviceDesc, headers);
 }).on("disappear", function(deviceDesc, headers){
-	console.log("disappear", deviceDesc);
+    console.log("disappear", deviceDesc);
 }).start();

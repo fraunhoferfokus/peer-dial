@@ -1,6 +1,6 @@
 /*******************************************************************************
  * 
- * Copyright (c) 2013 Louay Bassbouss, Fraunhofer FOKUS, All rights reserved.
+ * Copyright (c) 2015 Louay Bassbouss, Fraunhofer FOKUS, All rights reserved.
  * 
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -65,3 +65,4 @@ dialClient.on("ready",function(){
 }).on("stop", function(){
     console.log("DIAL client is stopped");
 }).start();
+// dialClient.stop();

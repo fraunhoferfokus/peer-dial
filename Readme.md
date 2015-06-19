@@ -155,6 +155,11 @@ dialClient.on("ready",function(){
 // dialClient.stop();
 ```
 
+API
+===
+
+API description coming soon. Please refer to the examples above that demonstrate the usage of all features supported in `peer-dial`. Not used features are in the comments.
+
 License
 =======
 

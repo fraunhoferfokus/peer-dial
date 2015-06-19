@@ -29,7 +29,7 @@ The `peer-dial` modules contains implementation for DIAL Client and Server.
 For DIAL Server usage please have a look to the following example ([test/dial-server.js](test/dial-server.js)).  In this example the DIAL Server supports the "YouTube" App through DIAL. This DIAL Server should be discoverable from YouTube App on iOS or Android. Just click on the cast button in the YouTube mobile App and select the name of your device. You can extend this example to support your custum DIAL Apps. Additional configuration parameters like `additionalData`, `namespaces`, `extraHeaders`, etc.  which are not used in the YouTube DIAL App are commented in this example. `peer-dial` uses these parameters to generate the UPnP device description and DIAL app description xml as defined in the DIAL Spec.
 
 ```javascript
-var dial = require("../index.js");
+var dial = require("peer-dial");
 var http = require('http');
 var express = require('express');
 var opn = require("opn");
@@ -107,7 +107,7 @@ server.listen(PORT,function(){
 For DIAL Client usage please have a look to the following example ([test/dial-client.js](test/dial-client.js)). This example contains calls for all interfaces of DIAL Client and DIAL Device, some of them are commented like `dialDevice.stopApp(...)` and `dialClient.stop();`
 
 ```javascript
-var dial = require("peer-dial.js");
+var dial = require("peer-dial");
 var dialClient = new dial.Client();
 dialClient.on("ready",function(){
     console.log("DIAL client is ready");

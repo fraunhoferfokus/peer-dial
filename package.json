@@ -6,16 +6,17 @@
 		"name": "Louay Bassbouss",
 		"email": "louay.bassbouss@fokus.fraunhofer.de"
 	},
-	"keywords": ["ssdp", "upnp", "nsd", "discovery", "launch", "dial"],
+	"keywords": ["ssdp", "upnp", "nsd", "discovery", "launch", "dial", "multiscreen", "chromecast"],
 	"main": "index",
 	"dependencies" : {
 		"peer-ssdp": "0.0.4",
 		"ejs": "1.0.0",
 		"node-uuid": "1.4.1",
-		"express": "4.4.5",
+		"express": "4.12.4",
         "opn": "2.0.0",
         "xml2js": "0.4.9"
 	},
+    "repository": "https://github.com/fraunhoferfokus/peer-dial.git",
 	"readmeFilename": "Readme.md",
 	"_id": "peer-dial@0.0.2",
 	"_from": "peer-dial@*"

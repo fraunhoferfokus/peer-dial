@@ -27,76 +27,58 @@ var server = http.createServer(app);
 
 var PORT = 3000;
 var MANUFACTURER = "Fraunhofer FOKUS";
-var MODEL_NAME = "FAMIUM Display";
+var MODEL_NAME = "DIAL Demo Server";
 
 var apps = {
-	"famium": {
-		name: "famium",
-		state: "stopped",
-		allowStop: true,
-		pid: null,
-        launch: function (launchData) {
-            opn(launchData);
-        }
-	},
 	"YouTube": {
 		name: "YouTube",
 		state: "stopped",
 		allowStop: true,
 		pid: null,
+        /*
+        additionalData: {
+            "ex:key1":"value1",
+            "ex:key2":"value2"
+        },
+        namespaces: {
+           "ex": "urn:example:org:2014"
+        }*/
         launch: function (launchData) {
             opn("http://www.youtube.com/tv?"+launchData);
         }
-	},
-	"HbbTV": {
-		name: "HbbTV",
-		state: "running",
-		allowStop: false,
-		additionalData: {
-			"hbbtv:X_HbbTV_App2AppURL":"",
-			"hbbtv:X_HbbTV_InterDevSyncURL": "",
-			"hbbtv:X_HbbTV_UserAgent": ""
-		},
-		namespaces: {
-			"hbbtv": "urn:hbbtv:HbbTVCompanionScreen:2014"
-		}
 	}
-}
+};
 var dialServer = new dial.Server({
 	expressApp: app,
 	port: PORT,
+    prefix: "/dial",
 	manufacturer: MANUFACTURER,
 	modelName: MODEL_NAME,
-	extraHeaders: {
-		"X-FAMIUM-TOKEN": "123456"
-	},
+	/*extraHeaders: {
+		"X-MY_HEADER": "My Value"
+	},*/
 	delegate: {
 		getApp: function(appName){
 			var app = apps[appName];
-			console.log("getApp result for App ",appName,app);
 			return app;
 		},
 		launchApp: function(appName,lauchData,callback){
-			console.log("launchApp request", lauchData);
+			console.log("Got request to launch", appName," with launch data: ", lauchData);
 			var app = apps[appName];
 			var pid = null;
-			if (app && app.state == "stopped") {
+			if (app) {
 				app.pid = "run";
 				app.state = "starting";
-                setTimeout(function () {
-                    app.launch && app.launch(lauchData);
-                    app.state = "running";
-                },500);
+                app.launch(lauchData);
+                app.state = "running";
 			}
-			console.log("launchApp result",app.pid);
 			callback(app.pid);
 		},
 		stopApp: function(appName,pid,callback){
+            console.log("Got request to stop", appName," with pid: ", pid);
 			var app = apps[appName];
 			if (app && app.pid == pid) {
 				app.pid = null;
-				app.timeout && clearTimeout(app.timeout);
-				app.timeout = null;
 				app.state = "stopped";
 				callback(true);
 			} 
@@ -109,9 +91,6 @@ var dialServer = new dial.Server({
 
 server.listen(PORT,function(){
 	dialServer.start();
-	setTimeout(function(){
-		dialServer.stop();
-		console.log("DIAL Server stopped");
-	}, 500000);
+	// dialServer.stop();
 	console.log("DIAL Server is running on PORT "+PORT);
 });

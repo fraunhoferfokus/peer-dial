@@ -4,19 +4,32 @@ peer-dial
 peer-dial is a simple Node.js module implementing the Discovery and Launch Protocol DIAL as described in the
 [Protocol Specification Document](http://www.dial-multiscreen.org/dial-protocol-specification)
 
+Dependencies
+============
+
+  * [Node.js](https://nodejs.org/). tested with version 0.12.4
+  * `Node.js` includes also `npm` to install directly using npm CLI as described in setup.
+
 Setup
 =====
 
   * use `npm install peer-dial` to install the module.
+
+Run Examples
+============
+
   * run DIAL Server Example with `node node_modules/peer-dial/test/dial-server.js` 
-  * run DIAL Client Example with `node node_modules/peer-dial/test/dial-client.js` 
+  * run DIAL Client Example with `node node_modules/peer-dial/test/dial-client.js`
+
 Usage
 =====
 
-For DIAL Server usage please have a look to the following example.  In this example the DIAL Server supports only the "YouTube" App. This DIAL Server example should work with the native YouTube App on iOS or Android.
+The `peer-dial` modules contains implementation for DIAL Client and Server.
+
+For DIAL Server usage please have a look to the following example ([test/dial-server.js](test/dial-server.js)).  In this example the DIAL Server supports the "YouTube" App through DIAL. This DIAL Server should be discoverable from YouTube App on iOS or Android. Just click on the cast button in the YouTube mobile App and select the name of your device. You can extend this example to support your custum DIAL Apps. Additional configuration parameters like `additionalData`, `namespaces`, `extraHeaders`, etc.  which are not used in the YouTube DIAL App are commented in this example. `peer-dial` uses these parameters to generate the UPnP device description and DIAL app description xml as defined in the DIAL Spec.
 
 ```javascript
-var dial = require("../index.js");
+var dial = require("peer-dial");
 var http = require('http');
 var express = require('express');
 var opn = require("opn");
@@ -31,17 +44,17 @@ var apps = {
 		state: "stopped",
 		allowStop: true,
 		pid: null,
-        /*
-        additionalData: {
-            "ex:key1":"value1",
-            "ex:key2":"value2"
-        },
-        namespaces: {
-           "ex": "urn:example:org:2014"
-        }*/
-        launch: function (launchData) {
-            opn("http://www.youtube.com/tv?"+launchData);
-        }
+    /*
+    additionalData: {
+        "ex:key1":"value1",
+        "ex:key2":"value2"
+    },
+    namespaces: {
+       "ex": "urn:example:org:2014"
+    }*/
+    launch: function (launchData) {
+        opn("http://www.youtube.com/tv?"+launchData);
+    }
 	}
 };
 var dialServer = new dial.Server({
@@ -91,10 +104,10 @@ server.listen(PORT,function(){
 });
 ```
 
-For DIAL Client usage please have a look to the following example:
+For DIAL Client usage please have a look to the following example ([test/dial-client.js](test/dial-client.js)). This example contains calls for all interfaces of DIAL Client and DIAL Device, some of them are commented like `dialDevice.stopApp(...)` and `dialClient.stop();`
 
 ```javascript
-var dial = require("peer-dial.js");
+var dial = require("peer-dial");
 var dialClient = new dial.Client();
 dialClient.on("ready",function(){
     console.log("DIAL client is ready");
@@ -139,7 +152,13 @@ dialClient.on("ready",function(){
 }).on("stop", function(){
     console.log("DIAL client is stopped");
 }).start();
+// dialClient.stop();
 ```
+
+API
+===
+
+API description coming soon. Please refer to the examples above that demonstrate the usage of all features supported in `peer-dial`. Not used features are in the comments.
 
 License
 =======
@@ -149,4 +168,4 @@ Free for non commercial use released under the GNU Lesser General Public License
 
 Contact us for commecial use famecontact@fokus.fraunhofer.de
 
-Copyright (c) 2013 Fraunhofer FOKUS
+Copyright (c) 2015 Fraunhofer FOKUS

@@ -1,7 +1,7 @@
 {
     "name": "peer-dial",
 	"description": "Nodejs implementation of the Discovery and Launch Protocol DIAL",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"author": {
 		"name": "Louay Bassbouss",
 		"email": "louay.bassbouss@fokus.fraunhofer.de"
@@ -9,7 +9,7 @@
 	"keywords": ["ssdp", "upnp", "nsd", "discovery", "launch", "dial", "multiscreen", "chromecast"],
 	"main": "index",
 	"dependencies" : {
-		"peer-ssdp": "0.0.4",
+		"peer-ssdp": "0.0.5",
 		"ejs": "1.0.0",
 		"node-uuid": "1.4.1",
 		"express": "4.12.4",
@@ -18,6 +18,6 @@
 	},
     "repository": "https://github.com/fraunhoferfokus/peer-dial.git",
 	"readmeFilename": "Readme.md",
-	"_id": "peer-dial@0.0.2",
+	"_id": "peer-dial@0.0.3",
 	"_from": "peer-dial@*"
 }

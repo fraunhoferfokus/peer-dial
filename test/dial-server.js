@@ -51,7 +51,8 @@ var apps = {
 var dialServer = new dial.Server({
 	expressApp: app,
 	port: PORT,
-    prefix: "/dial",
+  prefix: "/dial",
+	corsAllowOrigins: "*",
 	manufacturer: MANUFACTURER,
 	modelName: MODEL_NAME,
 	/*extraHeaders: {

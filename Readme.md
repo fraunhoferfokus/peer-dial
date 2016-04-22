@@ -60,7 +60,7 @@ var apps = {
 var dialServer = new dial.Server({
 	expressApp: app,
 	port: PORT,
-    prefix: "/dial",
+	prefix: "/dial",
 	manufacturer: MANUFACTURER,
 	modelName: MODEL_NAME,
 	/*extraHeaders: {
@@ -103,6 +103,19 @@ server.listen(PORT,function(){
 	console.log("DIAL Server is running on PORT "+PORT);
 });
 ```
+
+When creating the DIAL Server, you can also specify an option to control what Origins are allowed under [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). By default, CORS is disabled.
+Set the origins to be allowed by providing a `corsAllowedOrigins` attribute. For example,
+to allow all origins:
+
+    var dialServer = new dial.Server({
+        ...
+        corsAllowedOrigins: true,        // allow all origins
+        ...
+    });
+
+`corsAllowedOrigins` can also be set to a string, a regex, or a function. See the `origin` configuration
+option of the [cors package](https://www.npmjs.com/package/cors) for details.
 
 For DIAL Client usage please have a look to the following example ([test/dial-client.js](test/dial-client.js)). This example contains calls for all interfaces of DIAL Client and DIAL Device, some of them are commented like `dialDevice.stopApp(...)` and `dialClient.stop();`
 

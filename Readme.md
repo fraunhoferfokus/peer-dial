@@ -60,7 +60,7 @@ var apps = {
 var dialServer = new dial.Server({
 	expressApp: app,
 	port: PORT,
-    prefix: "/dial",
+	prefix: "/dial",
 	manufacturer: MANUFACTURER,
 	modelName: MODEL_NAME,
 	/*extraHeaders: {
@@ -104,8 +104,8 @@ server.listen(PORT,function(){
 });
 ```
 
-When creating the DIAL Server, you can also specify an option to control what Origins are allowed under [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). By default, CORS is disabled. 
-Set the origins to be allowed by providing a`corsAllowedOrigins` attribute. For example,
+When creating the DIAL Server, you can also specify an option to control what Origins are allowed under [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing). By default, CORS is disabled.
+Set the origins to be allowed by providing a `corsAllowedOrigins` attribute. For example,
 to allow all origins:
 
     var dialServer = new dial.Server({

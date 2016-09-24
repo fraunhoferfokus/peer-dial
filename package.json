@@ -15,7 +15,8 @@
 		"express": "4.12.4",
 		"opn": "2.0.0",
 		"xml2js": "0.4.9",
-		"cors": "^2.7.1"
+		"cors": "^2.7.1",
+		"gate": "^0.3.0"
 	},
 	"repository": "https://github.com/fraunhoferfokus/peer-dial.git"
 }

@@ -25,7 +25,12 @@ var opn = require("opn");
 var app = express();
 var server = http.createServer(app);
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 var PORT = 3000;
+var FRIENDLY_NAME = "My PC";
 var MANUFACTURER = "Fraunhofer FOKUS";
 var MODEL_NAME = "DIAL Demo Server";
 
@@ -44,7 +49,16 @@ var apps = {
            "ex": "urn:example:org:2014"
         }*/
         launch: function (launchData) {
-            opn("http://www.youtube.com/tv?"+launchData);
+            var url = "http://www.youtube.com/tv?";
+			if (launchData.dialPlainTextOptions) {
+				url += launchData.dialPlainTextOptions;
+			} else {
+				url += "pairingCode=" + launchData.pairingCode;
+				if (launchData.v) url += "&v=" + launchData.v;
+				if (launchData.t) url += "&t=" + launchData.t;
+			}
+			// opn(url, {app: ['/Applications/Google Chrome.app', '--kiosk']}); /* for Mac */
+			opn(url);
         }
 	}
 };
@@ -53,6 +67,7 @@ var dialServer = new dial.Server({
 	port: PORT,
   prefix: "/dial",
 	corsAllowOrigins: "*",
+	friendlyName: FRIENDLY_NAME,
 	manufacturer: MANUFACTURER,
 	modelName: MODEL_NAME,
 	/*extraHeaders: {
@@ -66,7 +81,6 @@ var dialServer = new dial.Server({
 		launchApp: function(appName,lauchData,callback){
 			console.log("Got request to launch", appName," with launch data: ", lauchData);
 			var app = apps[appName];
-			var pid = null;
 			if (app) {
 				app.pid = "run";
 				app.state = "starting";

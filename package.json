@@ -10,7 +10,6 @@
 	"main": "index",
 	"dependencies" : {
 		"peer-ssdp": "0.0.5",
-		"ejs": "1.0.0",
 		"node-uuid": "1.4.1",
 		"express": "4.12.4",
 		"opn": "2.0.0",

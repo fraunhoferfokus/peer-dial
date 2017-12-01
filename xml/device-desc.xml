@@ -4,13 +4,13 @@
     <major>1</major>
     <minor>0</minor>
   </specVersion>
-  <URLBase>{{=URLBase}}</URLBase>
+  <URLBase><%=URLBase%></URLBase>
   <device>
     <deviceType>urn:dial-multiscreen-org:device:dial:1</deviceType>
-    <friendlyName>{{=friendlyName}}</friendlyName>
-    <manufacturer>{{=manufacturer}}</manufacturer>
-    <modelName>{{=modelName}}</modelName>
-    <UDN>uuid:{{=uuid}}</UDN>
+    <friendlyName><%=friendlyName%></friendlyName>
+    <manufacturer><%=manufacturer%></manufacturer>
+    <modelName><%=modelName%></modelName>
+    <UDN>uuid:<%=uuid%></UDN>
     <iconList>
       <icon>
         <mimetype>image/png</mimetype>

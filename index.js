@@ -18,4 +18,6 @@
  * AUTHORS: Louay Bassbouss (louay.bassbouss@fokus.fraunhofer.de)
  *
  ******************************************************************************/
-module.exports = require("./lib/peer-dial");
+
+exports.Client = require("./lib/client");
+exports.Server = require("./lib/server");

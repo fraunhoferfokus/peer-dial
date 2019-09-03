@@ -19,11 +19,11 @@
 	"main": "index",
 	"dependencies": {
 		"cors": "^2.8.5",
-		"ejs": "2.6.2",
+		"ejs": "2.7.1",
 		"gate": "^0.3.0",
 		"peer-ssdp": "0.0.5",
-		"uuid": "^3.3.2",
-		"xml2js": "0.4.19"
+		"uuid": "^3.3.3",
+		"xml2js": "0.4.21"
 	},
 	"devDependencies": {
 		"express": "4.17.1",

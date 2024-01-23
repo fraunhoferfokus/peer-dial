@@ -23,7 +23,7 @@
 		"gate": "^0.3.0",
 		"peer-ssdp": "0.0.5",
 		"uuid": "^3.3.3",
-		"xml2js": "0.4.21"
+		"xml2js": "0.5.0"
 	},
 	"devDependencies": {
 		"express": "4.17.1",

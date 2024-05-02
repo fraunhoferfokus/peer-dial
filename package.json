@@ -19,7 +19,7 @@
 	"main": "index",
 	"dependencies": {
 		"cors": "^2.8.5",
-		"ejs": "3.1.7",
+		"ejs": "3.1.10",
 		"gate": "^0.3.0",
 		"peer-ssdp": "0.0.5",
 		"uuid": "^3.3.3",

@@ -21,7 +21,6 @@
 var dial = require("../index.js");
 var http = require('http');
 var express = require('express');
-var open = require("open");
 var app = express();
 var server = http.createServer(app);
 
@@ -44,7 +43,10 @@ var apps = {
            "ex": "urn:example:org:2014"
         }*/
         launch: function (launchData) {
-            open("http://www.youtube.com/tv?"+launchData);
+			import('open').then((openModule) => {
+				const open = openModule.default;
+				open("http://www.youtube.com/tv?"+launchData);
+			})
         }
 	}
 };
